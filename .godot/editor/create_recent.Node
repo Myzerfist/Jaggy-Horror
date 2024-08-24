@@ -1,0 +1,14 @@
+Area3D
+Label
+Control
+AnimationPlayer
+Node3D
+CollisionShape3D
+StaticBody3D
+Camera3D
+MeshInstance3D
+CharacterBody3D
+Node
+NavigationRegion3D
+NavigationAgent3D
+Sprite3D

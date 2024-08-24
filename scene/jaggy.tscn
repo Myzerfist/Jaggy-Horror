@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqv1cdfbo84cf"]
+
+[ext_resource type="Texture2D" uid="uid://c8mkff8h7yjox" path="res://jaggy.jpg" id="1_mxrng"]
+[ext_resource type="Script" path="res://scene/jaggy.gd" id="1_tf8w2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mnxwd"]
+size = Vector3(7, 5, 3)
+
+[node name="Jaggy" type="CharacterBody3D" groups=["jaggy_p"]]
+script = ExtResource("1_tf8w2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.0289, 0, 0, 0, 0.0289, 0, 0, 0, 0.0289, -0.032135, 0.564189, 0)
+shape = SubResource("BoxShape3D_mnxwd")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 3.48221, 0)
+texture = ExtResource("1_mxrng")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, -0.0274658, 0.482213, 0)
+shape = SubResource("BoxShape3D_mnxwd")

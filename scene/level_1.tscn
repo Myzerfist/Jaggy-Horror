@@ -1,0 +1,126 @@
+[gd_scene load_steps=17 format=3 uid="uid://cbepnh8ecbwwh"]
+
+[ext_resource type="Texture2D" uid="uid://c128ifwm22k5y" path="res://Grass001_4K-JPG/Grass001_4K-JPG_Color.jpg" id="1_8qoeh"]
+[ext_resource type="Script" path="res://scene/level_1.gd" id="1_nujol"]
+[ext_resource type="Texture2D" uid="uid://cdxiwhckxahk1" path="res://Grass001_4K-JPG/Grass001_4K-JPG_AmbientOcclusion.jpg" id="2_j65s7"]
+[ext_resource type="Texture2D" uid="uid://uijpwpyu0k2d" path="res://Grass001_4K-JPG/Grass001_4K-JPG_Displacement.jpg" id="3_wtrw5"]
+[ext_resource type="Texture2D" uid="uid://bopsbdv3obj3e" path="res://Grass001_4K-JPG/Grass001_4K-JPG_NormalGL.jpg" id="4_qj73j"]
+[ext_resource type="Texture2D" uid="uid://dn176488n0jur" path="res://Grass001_4K-JPG/Grass001_4K-JPG_NormalDX.jpg" id="5_gdxki"]
+[ext_resource type="Texture2D" uid="uid://cpxokgw255n87" path="res://wood.JPG" id="6_fnbkv"]
+[ext_resource type="PackedScene" uid="uid://bs2jm62cmkbrk" path="res://addons/instant-realistic-light/light_scene.tscn" id="7_fuwi6"]
+[ext_resource type="PackedScene" uid="uid://dqv1cdfbo84cf" path="res://scene/jaggy.tscn" id="8_rwwei"]
+[ext_resource type="PackedScene" uid="uid://dt6j86fa1d20w" path="res://scene/player.tscn" id="9_7esu1"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_gald4"]
+vertices = PackedVector3Array(0.25, 12.25, -25.25, 25, 12.25, -24.75, 25, 12.25, -25.25, -25, 12.25, -25, -25, 12.25, -24.5, -0.25, 12.25, -24.75, -23.75, 0.5, -23.75, -23.75, 0.5, 24, 24, 0.5, 24, 24, 0.5, -24, -25, 12.25, 24.75, -25, 12.25, 25.25, -0.25, 12.25, 25.25)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(12, 11, 10)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hda8y"]
+albedo_color = Color(0.547791, 0.580027, 0.445357, 1)
+albedo_texture = ExtResource("1_8qoeh")
+roughness_texture = ExtResource("5_gdxki")
+normal_enabled = true
+normal_texture = ExtResource("4_qj73j")
+ao_enabled = true
+ao_texture = ExtResource("2_j65s7")
+heightmap_texture = ExtResource("3_wtrw5")
+subsurf_scatter_texture = ExtResource("3_wtrw5")
+uv1_scale = Vector3(4.555, 4.555, 4.555)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bpsul"]
+material = SubResource("StandardMaterial3D_hda8y")
+size = Vector2(53, 53)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7asp6"]
+size = Vector3(51, 0.562012, 51)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ntqq"]
+albedo_texture = ExtResource("6_fnbkv")
+uv1_scale = Vector3(3.08, 3.08, 3.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qvlj1"]
+material = SubResource("StandardMaterial3D_5ntqq")
+
+[node name="Level 1" type="Node3D"]
+script = ExtResource("1_nujol")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_gald4")
+
+[node name="room" type="Node" parent="NavigationRegion3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D/room"]
+mesh = SubResource("PlaneMesh_bpsul")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/room/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/room/Floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.218994, 0)
+shape = SubResource("BoxShape3D_7asp6")
+
+[node name="walls" type="Node" parent="NavigationRegion3D/room"]
+
+[node name="Walls" type="MeshInstance3D" parent="NavigationRegion3D/room/walls"]
+transform = Transform3D(1, 0, 0, 0, 11.6, 0, 0, 0, 51, 25, 6, 0)
+mesh = SubResource("BoxMesh_qvlj1")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/room/walls/Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/room/walls/Walls/StaticBody3D"]
+
+[node name="Walls2" type="MeshInstance3D" parent="NavigationRegion3D/room/walls"]
+transform = Transform3D(1, 0, 0, 0, 11.6, 0, 0, 0, 51, -25, 6, 0)
+mesh = SubResource("BoxMesh_qvlj1")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/room/walls/Walls2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/room/walls/Walls2/StaticBody3D"]
+
+[node name="Walls3" type="MeshInstance3D" parent="NavigationRegion3D/room/walls"]
+transform = Transform3D(-4.37114e-08, 0, 51, 0, 11.6, 0, -1, 0, -2.22928e-06, 0, 6, -25)
+mesh = SubResource("BoxMesh_qvlj1")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/room/walls/Walls3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/room/walls/Walls3/StaticBody3D"]
+
+[node name="Walls4" type="MeshInstance3D" parent="NavigationRegion3D/room/walls"]
+transform = Transform3D(-4.37114e-08, 0, 51, 0, 11.6, 0, -1, 0, -2.22928e-06, 0, 6, 25)
+mesh = SubResource("BoxMesh_qvlj1")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/room/walls/Walls4"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/room/walls/Walls4/StaticBody3D"]
+transform = Transform3D(1, 0, -2.27374e-13, 0, 1, 0, -5.55112e-17, 0, 1, 0, 0, 0)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("7_fuwi6")]
+
+[node name="Jaggy" parent="." instance=ExtResource("8_rwwei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120396, 0.306565, 14.1788)
+
+[node name="Player" parent="." instance=ExtResource("9_7esu1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.61208, -18)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Stamina: 10.0"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 104.0
+offset_bottom = 44.0
+text = "Deaths: 0"

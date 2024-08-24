@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1724249139
+icon.svg::CompressedTexture2D::8180367477999317792::1724247966::1724247973::1::::<><>::
+jaggy.jpg::CompressedTexture2D::7114462153344238583::1724248222::1724248628::1::::<><>::
+wood.JPG::CompressedTexture2D::5874022956531682022::1724249135::1724249147::1::::<><>::
+::res://Grass001_4K-JPG/::1724248591
+Grass001.png::CompressedTexture2D::2897969089727004156::1692126468::1724248408::1::::<><>::
+Grass001_4K-JPG_AmbientOcclusion.jpg::CompressedTexture2D::5031413981289871802::1692126586::1724248476::1::::<><>::
+Grass001_4K-JPG_Color.jpg::CompressedTexture2D::6655507745632018372::1692126624::1724248430::1::::<><>::
+Grass001_4K-JPG_Displacement.jpg::CompressedTexture2D::1420866314440538889::1692126492::1724248497::1::::<><>::
+Grass001_4K-JPG_NormalDX.jpg::CompressedTexture2D::8127390719032291925::1692126512::1724248591::1::::<><>::
+Grass001_4K-JPG_NormalGL.jpg::CompressedTexture2D::3401125043902046728::1692126554::1724248459::1::::<><>::
+Grass001_4K-JPG_Roughness.jpg::CompressedTexture2D::7399645200874802665::1692126684::1724248443::1::::<><>::
+::res://scene/::1724249108
+level_1.tscn::PackedScene::4852222111079210803::1724249108::0::1::::<><>::uid://c128ifwm22k5y::::res://Grass001_4K-JPG/Grass001_4K-JPG_Color.jpg<>uid://cdxiwhckxahk1::::res://Grass001_4K-JPG/Grass001_4K-JPG_AmbientOcclusion.jpg<>uid://uijpwpyu0k2d::::res://Grass001_4K-JPG/Grass001_4K-JPG_Displacement.jpg<>uid://bopsbdv3obj3e::::res://Grass001_4K-JPG/Grass001_4K-JPG_NormalGL.jpg<>uid://dn176488n0jur::::res://Grass001_4K-JPG/Grass001_4K-JPG_NormalDX.jpg
+jaggy.tscn::PackedScene::8327217860882361733::1724249016::0::1::::<><>::uid://c8mkff8h7yjox::::res://jaggy.jpg

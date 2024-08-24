@@ -1,0 +1,6 @@
+res://scene/jaggy.tscn
+res://scene/level_1.tscn
+res://scene/player.tscn
+res://scene/jaggy.gd
+res://scene/level_1.gd
+res://scene/player.gd
